@@ -1,0 +1,43 @@
+<?php
+	include('Header.php');
+	?>
+<!DOCTYPE html>
+<html>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" a href="https://stachpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+	<link rel="stylesheet" a href="Style.css"/>
+	</head>
+	<body>
+      <div class="wrapper">
+        <form action="RegistrationCode.php" method="post">
+	
+				<h2>REGISTER HERE</h2>
+			
+				CUSTOMER NAME
+				<br/>
+				<input type="text" name="txtName" style="width:95%;" Required/>
+			
+				ADDRESS
+				<br/>
+				<input type="text" name="txtAddress" style="width:95%;" Required/>
+			
+				CONTACT NUMBER
+				<br/>
+				<input type="text" name="txtContactNo" style="width:95%;" minlength="10" maxlength="10" Required/>
+			
+				EMAIL ID
+				<br/>
+				<input type="text" name="txtMailId" style="width:95%;" placeholder="abcde@gmail.com" pattern=".+@gmail\.com" Required/>
+			
+				PASSWORD
+				<br/>
+				<input type="password" name="txtPassword" style="width:95%;" minlength="5" maxlength="8" >
+				
+			<input type="submit" name="btnSubmit" value="REGISTER" class="btn_submit" style="width:95%;" /
+		
+				<br/>
+				<a href="LoginCustomer.php">LOGIN REGISTERED...??? LOGIN !!!></a>
+</form>
+</div>
+</body>
+</html>

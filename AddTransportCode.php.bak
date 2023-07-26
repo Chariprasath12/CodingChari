@@ -1,0 +1,44 @@
+
+<?php
+	include('HeaderAdmin.php');
+	
+	
+	/*$Id = "";
+    foreach($_POST as $name => $content){
+    $Id = $name;
+    }
+	if($Id!="")
+	{
+		echo $Id;
+		
+	}
+	
+	return;
+	*/
+	
+	
+	$query= mysql_query("Select Count(*)+1 as data From Transport", $con);
+	$row = mysql_fetch_array($query);
+	$Id="T" . sprintf("%03d",$row['data']);
+
+	$Name=$_POST["txtTN"];
+	$Registration=$_POST["txtRN"];
+	$MFD=$_POST["txtMY"];
+
+	$file_name = "";
+	
+	if(isset($_FILES['fileUploader']))
+	{
+		$nameforExt = $_FILES['fileUploader']['name'];
+		$ext = pathinfo($nameforExt, PATHINFO_EXTENSION);
+        
+        $file_name = $Id . '.' . $ext;
+        $file_tmp =$_FILES['fileUploader']['tmp_name'];
+        move_uploaded_file($file_tmp,"Image/Transport/".$file_name);
+	}
+
+	$qry="Insert Into Transport(TransportCode,NameOfTransport,Registration,MFGYear,Image) Values('". $Id ."','". $Name ."','". $Registration ."','". $MFD ."','". $file_name ."')";
+	mysql_query($qry,$con) or die(mysql_error());
+   	header('location:AddTransport.php');
+	mysql_close($con);
+?>

@@ -1,0 +1,70 @@
+<html>
+<head>
+<!--
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+  -->
+  
+  
+<link rel="stylesheet" href="css/bootstrap.min.css">
+  <script src="css/jquery.min.js"></script>
+  <script src="css/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="css/all.css">
+  <link rel="stylesheet" type="text/css" href="style.css" />
+  
+</head>
+<body>
+<?php
+include('HeaderAdmin.php');
+include('Db.php');	
+
+
+	$query= mysql_query("SELECT coalesce(max(sno),0)+1  as cnt FROM Transport", $con);
+	$row = mysql_fetch_array($query);
+	$Id="T" . sprintf("%03d",$row['cnt']);
+	
+
+?>
+	
+	<center>
+		<h4>CUSTOMER DETAILS</h4>
+	</center>
+
+	<form action="" method="post" enctype="multipart/form-data">
+	
+		<center>
+		<table border='1' cellspacing='0' class="table table-bordered table-hover table-striped table-condensed;">
+		
+		<tr>
+			<th>Customer Id</th>
+			<th>Customer Name</th>
+			<th>Address </th>
+			<th>Contact No.</th>
+			<th>Mail Id</th>
+		
+		</tr>
+		
+		<?php
+		$query= mysql_query("Select * From CustomerTable", $con);
+		while ($row = mysql_fetch_array($query))
+		{
+			echo "<tr>";
+			echo "<td style='padding-top:40px' valign='middle'>" . $row['CustomerCode'] . "</td>";
+			echo "<td style='padding-top:40px' valign='middle'>" . $row['CustomerName'] . "</td>";
+			echo "<td style='padding-top:40px' valign='middle'>" . $row['Address'] . "</td>";
+			echo "<td style='padding-top:40px' valign='middle'>" . $row['ContactNo'] . "</td>";
+			echo "<td style='padding-top:40px' valign='middle'>" . $row['EmailId'] . "</td>";
+			echo "</tr>";
+		}
+		
+	?>
+		
+		</table>
+		</center>
+	</form>
+
+
+</body>
+</html>

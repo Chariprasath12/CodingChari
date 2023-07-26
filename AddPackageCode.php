@@ -1,0 +1,58 @@
+
+<?php
+	include('HeaderAdmin.php');
+	
+	
+	/*$Id = "";
+    foreach($_POST as $name => $content){
+    $Id = $name;
+    }
+	if($Id!="")
+	{
+		echo $Id;
+		
+	}
+	
+	return;*/
+	
+	
+	
+	$query= mysql_query("SELECT coalesce(max(sno),0)+1 as cnt FROM Package", $con);
+	$row = mysql_fetch_array($query);
+	$Id="P" . sprintf("%03d",$row['cnt']);
+
+	$PN=$_POST["txtPN"];
+	$PV=$_POST["txtPV"];
+	$Dur=$_POST["txtDuration"];
+	
+	$Fare=$_POST["txtFare"];
+	$Desc=$_POST["txtDesc"];
+	if(isset($_POST["cb1"]))
+	{
+	$IncludesFood=$_POST["cb1"];
+	}
+	else
+	{
+		$IncludesFood='No';
+	}
+	
+	
+	
+	$file_name = "";
+	
+	if(isset($_FILES['fileUploader']))
+	{
+		$nameforExt = $_FILES['fileUploader']['name'];
+		$ext = pathinfo($nameforExt, PATHINFO_EXTENSION);
+        $file_name = $Id . '.' . $ext;
+        $file_tmp =$_FILES['fileUploader']['tmp_name'];
+        move_uploaded_file($file_tmp,"image/package/".$file_name);
+	}
+	
+	
+
+	$qry="Insert Into Package(PackageCode,PackageName,PlacesOfVisit,TripDuration,Fare,Description,IncludeFood,Image ) Values('". $Id ."','". $PN ."','". $PV ."','". $Dur ."','".  $Fare ."','".  $Desc ."','".$IncludesFood ."','".$file_name ."')";
+	mysql_query($qry,$con) or die(mysql_error());
+   	header('location:AddPackage.php');
+	mysql_close($con);
+?>

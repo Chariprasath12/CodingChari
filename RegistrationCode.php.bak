@@ -1,0 +1,25 @@
+<?php
+	session_start();
+	error_reporting(0);
+	include('Header.php');
+	
+	$query= mysql_query("Select Count(*)+1 as data From CustomerTable", $con);
+	$row = mysql_fetch_array($query);
+	$Id="C" . sprintf("%03d",$row['data']);
+
+	$Name=$_POST["txtName"];
+	$Address=$_POST["txtAddress"];
+	$ContactNo=$_POST["txtContactNo"];
+	$MailId=$_POST["txtMailId"];
+	$Password=$_POST["txtPassword"];
+		
+	$qry="Insert Into CustomerTable Values('". $Id ."','". $Name ."','". $Address ."','". $ContactNo ."','". $MailId ."','". $Password ."')";
+	mysql_query($qry,$con) or die(mysql_error());
+	echo "<br/><br/><centre>Registration Successfull! <center><br/>";
+	echo "<a href='LoginCustomer.php'><center>Click Here For Login<center></a>";
+	mysql_close($con);
+?>
+
+
+
+

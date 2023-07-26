@@ -1,0 +1,284 @@
+body,html
+{
+	margin:0;
+    padding: 0;
+  	color:black;
+    font-size: 12pt;
+    font-family: Impact,sans-serif;
+    background-color: #ffff99;
+}
+
+div, table
+{
+	text-align:center;
+}
+
+.navbar {
+	width: 100%;
+	align-items: center;
+	display: flex;
+	padding: 10px 0;
+	justify-content: space-between;
+	
+}
+ 
+
+.navbar ul li{
+	display: inline-block;
+	margin: 10px 20px;
+}
+
+.navbar ul li a{
+	color: #fff;
+	text-decoration: none;
+}
+
+.btn{
+	display: flex;
+	align-items: center;
+	padding: 10px 20px;
+	border: 0;
+	outline: 0;
+	border-radius: 5px;
+	background: #f5168d;
+	color: #fff;
+	font-weight: 500;
+	cursor: pointer;
+}
+
+.navbar a:hover {
+	color:black;
+	background-color:grey;
+}
+
+.tbl
+{
+	margin-top:40px;
+	font-size:16px;
+	text-align:left;
+}
+
+.btn_orange
+{
+	background-color:darkorange; 
+	border:none; 
+	height:24px;
+	color:White;
+	font-size:14px;
+}
+
+.btn_submit
+{
+	background-color:#00cccc; 
+	border:none; 
+	color:White;
+	font-size:14px;
+	padding: 4px 15px;
+	border-radius: 2px;
+}
+
+.btn_delete
+{
+	background-color:#732673; 
+	border:none; 
+	height:24px;
+	color:White;
+	font-size:12px;
+}
+*{
+	margin:0;
+	padding:0;
+}
+.container{
+	width:100%;
+	height:100vh;
+	background-image:url(image/bg.jpg);
+	background-size:cover;
+	background-repeat:no-repeat;
+	background-position:center;
+	padding-left:8%;
+	padding-right:8%;
+	box-sizing:border-box;
+}
+.header{
+	 height:15%;
+	 display:flex;
+	 align-items:center;
+	 overflow:hidden;
+	 position:relative;
+}
+.logo{
+	width:200px;
+	cursor:pointer;
+}
+.navbar{
+	text-align:center;
+	flex:1;
+}
+.navbar a{
+	padding:6px 20px;
+	text-decoration:none;
+	color:black;
+	margin-left:20px;
+	font-size:20px;
+	font-weight:bold;
+}
+.btn{
+	cursor:pointer;
+	color:#cc0052;
+	font-size:18px;
+	letter-spacing:2px;
+	padding:10px 30px;
+	border:2px solid #003333;	
+	background:transparent;
+	text-decoration:none;
+	text-align:center;
+	font-weight:bold;
+	margin:40px 8px;
+}
+.content{
+	text-align:center;
+	margin-top:12%;
+}
+.content h1{
+	font-size:80px;
+	color:black;
+}
+.btn:hover{
+	color:#000;
+	background-color:#fff;
+}
+.btn a:visited{
+	background-color:#fff;
+	color:#cc0052;
+}
+.btn a:hover{
+	color:#000;
+}
+.btn a:link{
+	text-decoration:none;
+}
+
+body{
+	margin: 0;
+	padding: 0;
+	background-image: url(image/bg.jpg);
+	-webkit-background: cover;
+	background-size: 100%;
+	font-family: Poppins;
+}
+.wrapper{
+	width: 400px;
+	font-weight: 420px;
+	color: #000;
+	top: 50%;
+	left: 50%;
+	padding: 60px 30px;
+	position: absolute;
+	transform: translate(-50%,-50%);
+	box-sizing: border-box;
+	box-shadow: 8px 8px 50px #000;
+}
+h2{
+	margin: 0;
+	padding: 0;
+	font-weight: bold;
+	font-size: 22px;
+	color: #cc0000;
+	text-align: center;
+	margin-bottom: 8%;
+	font-family: Courgette;
+}
+h3{
+	margin: 0;
+	padding: 0;
+	font-weight: bold;
+	font-size: 22px;
+	color: #cc0000;
+	text-align: center;
+	margin-bottom: 8%;
+	font-family: Courgette;
+}
+.wrapper input{
+	width: 100%;
+	margin-bottom: 20px;
+}
+	
+.wrapper input[type=text], .wrapper input[type=password]{
+	broder: none;
+	border-bottom: 1px solid #ddd;
+	background: transparent;
+	outline: none;
+	height: 30px;
+	font-size: 16px;
+	opacity: 1;
+	color: #ccc;
+}
+.wrapper input[type=submit]{
+	border: none;
+	outline: none;
+	height: 40px;
+	background: #f6648b;
+	color: #fff;
+	font-size: 14px;
+	font-weight: bold;
+}
+.wrapper input[type=submit]:hover{
+	cursor: pointer;
+}
+.wrapper a{
+	font-size: 14px;
+	text-decoration: none;
+	color: #fff;
+	opacity: 0.8;
+}
+.wrapper a:hover{
+	color: #000;
+	opacity: 1;
+}
+.bottom-text{
+	color: #fff;
+}
+.bottom-text input{
+	width: 10%;
+	float: left;
+}
+.bottom-text a{
+	float: right;
+}
+.socials{
+	margin-top: 12%;
+	text-align: center;
+}
+.socials a{
+	width: 30px;
+	height: 30px;
+	display: inline-block;
+	border: 1px solid #fff;
+	border-radius: 50%;
+	margin: 0 5px;
+}
+. socials a:nth-child(1){
+	background: #3b5998;
+}
+. socials a:nth-child(2){
+	background: #55acee;
+}
+. socials a:nth-child(3){
+	background: #bd081c;
+}
+. socials a:nth-child(4){
+	background: #0077b5;
+}
+.socials a i{
+	padding: 8px 0;
+}
+#overlay-area{
+	position: absolute;
+	background-color: rgba(0,0,0,0.5);
+	z-index: -5;
+	height: 100%;
+	width: 100%;
+	top: 0;
+	bottom: 0;
+}

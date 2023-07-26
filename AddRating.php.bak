@@ -1,0 +1,101 @@
+<?php
+session_start();
+?>
+<html>
+<head>
+<!--
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+  -->
+  
+  
+<link rel="stylesheet" href="css/bootstrap.min.css">
+  <script src="css/jquery.min.js"></script>
+  <script src="css/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="css/all.css">
+  <link rel="stylesheet" type="text/css" href="style.css" />
+  
+</head>
+<body>
+<?php
+include('HeaderCustomer.php');
+include('Db.php');	
+
+
+	$query= mysql_query("SELECT coalesce(max(sno),0)+1  as cnt FROM Rating", $con);
+	$row = mysql_fetch_array($query);
+	$Id=$row['cnt'];
+	
+
+?>
+	
+	<center>
+		<h4>RATING DETAILS</h4>
+	</center>
+
+	<form action="AddRatingCode.php" method="post" enctype="multipart/form-data">
+	<center>
+			<table  align="center" border='1' cellspacing='0' style="width:500px" class="table table-bordered table-hover table-striped ">
+			<tr>
+				<td align="right">S.No:</td> <td><input type="text" name="txtID" value="<?php echo $Id; ?>" Required disabled/></td>
+			</tr>
+			<tr>
+				<td align="right">Entry Date:</td> <td><input type="text" name="txtEntryDate" value='<?php echo date('Y-m-d') ?>' Required/></td>
+			</tr>
+			<tr>
+				<td align="right">Rating</td> <td>
+				<select name='cboRating'>
+				<option>5</option>
+				<option>4</option>
+				<option>3</option>
+				<option>2</option>
+				<option>1</option>
+				</select>
+				</td>
+			</tr>
+			<tr>
+				<td align="right">Description.:</td> <td><textarea rows='5' cols='30' name="txtDesc" Required></textarea></td>
+			</tr>
+			<tr>
+				<td></td> <td><input type="submit" name="btnSubmit" value="Submit" class="btn_submit" style="width:152px;" /></td>
+			</tr>
+		</table>
+		<?php
+		$query= mysql_query("Select A.SNo,A.EntryDate,A.Rating,A.Description,B.CustomerCode,B.CustomerName,B.Address From Rating A,CustomerTable B Where  B.CustomerCode='" .$_SESSION['username']  . "'" , $con);
+		
+		while ($row = mysql_fetch_array($query))
+		{
+			echo "<table class='table table-hover table-bordered table-striped' style='width:60%'>";
+		//	echo "<tr><td rowspan='10' style='padding-top:40px;width:200px' valign='middle'><a href='image/package/" . $row['Image'] . "'><img src='image/package/" . $row['Image'] . "' width='100' height='100'/></a></td></tr>";
+			
+			
+			echo "<tr>";
+			echo "<tr><td style='width:250px' style='font-size:22px' align='left'>S.No</td><td align='left' valign='middle'>" . $row['SNo'] . "</td></tr>";
+			echo "<tr><td  align='left'>Entry Date</td><td align='left'  valign='middle'>" . $row['EntryDate'] .  "</td></tr>";
+				echo "<tr><td  align='left'>Customer Code</td><td align='left'  valign='middle' style='font-size:22px'>" . $row['CustomerCode'] .  "</td></tr>";
+			echo "<tr><td  align='left'>Customer Name</td><td align='left'  valign='middle' >" . $row['CustomerName'] .  "</td></tr>";
+			echo "<tr><td  align='left'>Address</td><td align='left'  valign='middle'>" . $row['Address'] .  "</td></tr>";
+			if ($row['Rating']>=3)
+			{
+			echo "<tr><td style='font-size:22px' align='left'>Rating</td><td align='left'  valign='middle' style='font-size:22px;color:green'>" . $row['Rating'] .  "</td></tr>";
+			echo "<tr><td style='font-size:22px' align='left'>Description</td><td align='left'  valign='middle' style='font-size:22px;color:green'>" . $row['Description'] .  "</td></tr>";
+			}
+			else
+			{	echo "<tr><td style='font-size:22px' align='left'>Rating</td><td align='left'  valign='middle' style='font-size:22px;color:red'>" . $row['Rating'] .  "</td></tr>";
+		echo "<tr><td style='font-size:22px' align='left'>Description</td><td align='left'  valign='middle' style='font-size:22px;color:green'>" . $row['Description'] .  "</td></tr>";
+				
+			}
+			
+			
+		//	echo "<tr><td colspan='2'><input type='submit' name='" . $row['ScheduleCode'] . "' value='Book >>' class='btn_submit' /></td></tr>";
+		}
+		?>
+		</center>
+
+	</form>
+
+
+</body>
+</html>
